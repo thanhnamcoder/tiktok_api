@@ -33,18 +33,16 @@ def fetch_user_info(username):
         nickname_match = re.search(r'"nickname":"(.*?)"', content)
         signature_match = re.search(r'"signature":"(.*?)"', content)
 
-        if all([follower_match, following_match, heart_match, uniqueId_match, nickname_match]):
-            user_data = {
-                "uniqueId": uniqueId_match.group(1),
-                "nickname": nickname_match.group(1),
-                "signature": signature_match.group(1) if signature_match else "",
-                "followerCount": int(follower_match.group(1)),
-                "followingCount": int(following_match.group(1)),
-                "heartCount": int(heart_match.group(1))
-            }
-            return {username: user_data}
-        else:
-            return {username: "Không tìm thấy đủ dữ liệu!"}
+        # Nếu dữ liệu không tìm thấy, đặt giá trị là ""
+        user_data = {
+            "uniqueId": uniqueId_match.group(1) if uniqueId_match else "",
+            "nickname": nickname_match.group(1) if nickname_match else "",
+            "signature": signature_match.group(1) if signature_match else "",
+            "followerCount": int(follower_match.group(1)) if follower_match else "",
+            "followingCount": int(following_match.group(1)) if following_match else "",
+            "heartCount": int(heart_match.group(1)) if heart_match else ""
+        }
+        return {username: user_data}
     else:
         return {username: "Không có dữ liệu cần xử lý."}
 
@@ -63,7 +61,7 @@ def get_tiktok_info():
 
     # Gộp kết quả thành dictionary
     merged_results = {k: v for result in results for k, v in result.items()}
-    
+
     return jsonify(merged_results)
 
 if __name__ == '__main__':
