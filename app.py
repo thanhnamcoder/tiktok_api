@@ -20,6 +20,7 @@ def fetch_user_info(username):
         return {username: f"Request thất bại! Mã lỗi: {response.status_code}"}
 
     content = response.text
+    print(content)
     count = content.count(username)
 
     if count == 1:
@@ -28,7 +29,7 @@ def fetch_user_info(username):
         # Dùng regex để tìm thông tin user
         follower_match = re.search(r'"followerCount":(\d+)', content)
         following_match = re.search(r'"followingCount":(\d+)', content)
-        heart_match = re.search(r'"heartCount":(\d+)', content)
+        heart_match = re.search(r'"heart":(\d+)', content)
         uniqueId_match = re.search(r'"uniqueId":"(.*?)"', content)
         nickname_match = re.search(r'"nickname":"(.*?)"', content)
         signature_match = re.search(r'"signature":"(.*?)"', content)
@@ -40,7 +41,7 @@ def fetch_user_info(username):
             "signature": signature_match.group(1) if signature_match else "",
             "followerCount": int(follower_match.group(1)) if follower_match else "",
             "followingCount": int(following_match.group(1)) if following_match else "",
-            "heartCount": int(heart_match.group(1)) if heart_match else ""
+            "heart": int(heart_match.group(1)) if heart_match else ""
         }
         return {username: user_data}
     else:
