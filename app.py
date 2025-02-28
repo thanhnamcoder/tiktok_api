@@ -63,7 +63,7 @@ def fetch_user_info(username):
     count = content.count(username)
 
     if count == 1:
-        return {username: "Không tìm thấy tài khoản"}
+        return {username: "Couldn't find this account"}
     elif count > 2:
         # Dùng regex để tìm thông tin user
         follower_match = re.search(r'"followerCount":(\d+)', content)
