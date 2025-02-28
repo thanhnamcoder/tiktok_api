@@ -1,0 +1,32 @@
+{
+    "huyn.thoi886": {
+        "timestamp": 1740761943.443872,
+        "data": {
+            "uniqueId": "huyn.thoi886",
+            "nickname": "Huyền Thoại",
+            "followerCount": 2,
+            "followingCount": 0,
+            "heart": 0
+        }
+    },
+    "cam.tho055": {
+        "timestamp": 1740761943.5207524,
+        "data": {
+            "uniqueId": "cam.tho055",
+            "nickname": "Cam Thảo",
+            "followerCount": 0,
+            "followingCount": 0,
+            "heart": 0
+        }
+    },
+    "diu.vn257": {
+        "timestamp": 1740761943.6135807,
+        "data": {
+            "uniqueId": "diu.vn257",
+            "nickname": "Diệu Vân",
+            "followerCount": 0,
+            "followingCount": 2,
+            "heart": 0
+        }
+    }
+}
